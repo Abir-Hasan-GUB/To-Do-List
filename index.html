@@ -4,88 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>To Do List</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: black;
-        }
-
-        .container {
-            height: 250px;
-            width: 300px;
-            background: rgb(189, 189, 189);
-            margin: 0 auto;
-            margin-top: 15%;
-            overflow: hidden;
-        }
-
-        .contaierOverflow {
-            overflow: scroll;
-        }
-
-        .main {
-            padding: 0 15px;
-        }
-
-        h3 {
-            color: black;
-            background-color: rgb(17, 198, 204);
-            text-align: center;
-            margin: 0 0 15px 0;
-            padding: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 5px;
-            border-radius: 5px;
-            border: none;
-            text-align: center;
-            font-weight: 700;
-            color: magenta;
-        }
-
-        input::placeholder {
-            text-align: center;
-            font-weight: 400;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        h5 {
-            color: rgb(27, 4, 236);
-            margin: 10px 0 5px 5px;
-        }
-
-        .taskList li {
-            color: rgb(219, 9, 9);
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .item {
-            color: rgb(140, 0, 255);
-        }
-
-        .nav {
-            position: fixed;
-            z-index: 999;
-            margin: 0 auto;
-            width: 300px;
-            background: rgb(189, 189, 189);
-        }
-
-        .taskList li:first-child {
-            margin-top: 105px;
-        }
-    </style>
 </head>
 
 <body>
@@ -96,39 +16,20 @@
                 <input type="text" placeholder="Enter your task">
             </div>
             <h5>Your Task:</h5>
+            <div class="noTaskWarning">
+                <h2>" No Task Remaining ! "</h2>
+            </div>
         </div>
         <ol class="taskList">
             <!-- list insert form input value through javascript -->
         </ol>
+
+        <footer>
+            <button class="clearBtn">Clear</button>
+        </footer>
     </div>
 
-    <script>
-        let input = document.querySelector('input');
-        let taskList = document.querySelector('.taskList');
-        let container = document.querySelector('.container');
-        let taskItems = [];
-
-        render = (elements) => {
-            taskList.innerHTML = "";
-
-            elements.forEach(e => {
-                let newElement = document.createElement('li');
-                newElement.innerHTML = `<span class="item">${e}</span>`;
-                taskList.appendChild(newElement);
-            })
-            if (elements.length > 5) {
-                container.classList.add('contaierOverflow');
-            }
-        }
-
-        input.addEventListener('keyup', e => {
-            if (e.which === 13 && input.value !== "") {
-                taskItems.push(input.value);
-                input.value = "";
-                render(taskItems);
-            }
-        })
-    </script>
+    <script src="coustom.js"></script>
 </body>
 
 </html>
